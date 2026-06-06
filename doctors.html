@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Doctors - EchoCare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <span class="fs-4">🧠 EchoCare</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link " href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tracker.html">Symptom Tracker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="patient-dashboard.html">Patient Care</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="alerts.html">Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="doctors.html">Find Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="disclaimer.html">Disclaimer</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Doctors Header -->
+    <section class="bg-gradient py-4">
+        <div class="container">
+            <h1 class="text-primary fw-bold mb-2">Find Doctors & Specialists</h1>
+            <p class="text-secondary mb-0">Connect with healthcare professionals specializing in dementia care</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Search by name or specialty..." id="searchInput">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="specialtyFilter">
+                        <option value="all">All Specialties</option>
+                        <option value="neurologist">Neurologist</option>
+                        <option value="geriatrician">Geriatrician</option>
+                        <option value="psychiatrist">Psychiatrist</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100" id="searchBtn">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Directory -->
+    <section class="py-5">
+        <div class="container">
+            <h3 class="fw-bold mb-4">Available Specialists</h3>
+            
+            <div class="row g-4" id="doctorDirectory">
+                <!-- Doctor Card 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="mb-3">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="fs-1">👨‍⚕️</span>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold mb-1">Dr. Suman Sharma</h5>
+                            <p class="text-primary small fw-bold mb-2">Neurologist</p>
+                            <p class="text-muted small mb-3">
+                                <span class="d-block">📍 Memorial Medical Center</span>
+                                <span class="d-block">Delhi</span>
+                            </p>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark border me-1 mb-1">Alzheimer's</span>
+                                <span class="badge bg-light text-dark border me-1 mb-1">Dementia Care</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-sm" onclick="openAppointmentModal('Dr. Sarah Martinez', 'Neurologist')">
+                                    Request Appointment
+                                </button>
+                                <a href="tel:555-0101" class="btn btn-outline-primary btn-sm">
+                                    📞 +91 9827364781
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="mb-3">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="fs-1">👩‍⚕️</span>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold mb-1">Dr. Madhav Shaam</h5>
+                            <p class="text-primary small fw-bold mb-2">Geriatrician</p>
+                            <p class="text-muted small mb-3">
+                                <span class="d-block">📍 Golden Years Clinic</span>
+                                <span class="d-block">Noida, UP</span>
+                            </p>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark border me-1 mb-1">Elderly Care</span>
+                                <span class="badge bg-light text-dark border me-1 mb-1">Memory Loss</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-sm" onclick="openAppointmentModal('Dr. James Chen', 'Geriatrician')">
+                                    Request Appointment
+                                </button>
+                                <a href="tel:555-0102" class="btn btn-outline-primary btn-sm">
+                                    📞 +91 9372847281
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="mb-3">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="fs-1">👨‍⚕️</span>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold mb-1">Dr. Keshav Arora</h5>
+                            <p class="text-primary small fw-bold mb-2">Psychiatrist</p>
+                            <p class="text-muted small mb-3">
+                                <span class="d-block">📍 MindCare Associates</span>
+                                <span class="d-block">Delhi</span>
+                            </p>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark border me-1 mb-1">Behavioral Health</span>
+                                <span class="badge bg-light text-dark border me-1 mb-1">Mood Disorders</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-sm" onclick="openAppointmentModal('Dr. Emily Thompson', 'Psychiatrist')">
+                                    Request Appointment
+                                </button>
+                                <a href="tel:555-0103" class="btn btn-outline-primary btn-sm">
+                                    📞 +91 9764567281
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="mb-3">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="fs-1">👩‍⚕️</span>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold mb-1">Dr. Rukmini Walia</h5>
+                            <p class="text-primary small fw-bold mb-2">Neurologist</p>
+                            <p class="text-muted small mb-3">
+                                <span class="d-block">📍 Bay Area Neurology</span>
+                                <span class="d-block">Gurugram, Haryana</span>
+                            </p>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark border me-1 mb-1">Cognitive Health</span>
+                                <span class="badge bg-light text-dark border me-1 mb-1">Parkinson's</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-sm" onclick="openAppointmentModal('Dr. Robert Williams', 'Neurologist')">
+                                    Request Appointment
+                                </button>
+                                <a href="tel:555-0104" class="btn btn-outline-primary btn-sm">
+                                    📞 +91 9362849281
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="card border-0 bg-light mt-5">
+                <div class="card-body p-4">
+                    <h6 class="fw-bold text-primary mb-3">💡 Tips for Your Doctor Visit</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="small text-secondary">
+                                <li>Bring your EchoCare symptom logs and dashboard summary</li>
+                                <li>List all current medications and dosages</li>
+                                <li>Write down questions ahead of time</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="small text-secondary">
+                                <li>Bring a family member or caregiver for support</li>
+                                <li>Ask about support groups and resources</li>
+                                <li>Request copies of test results and reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Share Dashboard CTA -->
+            <div class="text-center mt-5">
+                <div class="card border-primary border-2 d-inline-block">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold text-primary mb-3">📊 Share Your Dashboard with Your Doctor</h5>
+                        <p class="text-secondary mb-3">Your symptom tracking data can help doctors make better treatment decisions</p>
+                        <a href="dashboard.html" class="btn btn-primary">View Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Request Modal -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="appointmentModalLabel">Request Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3 p-3 bg-light rounded">
+                        <p class="mb-1"><strong>Doctor:</strong> <span id="modalDoctorName"></span></p>
+                        <p class="mb-0 text-muted small"><span id="modalDoctorSpecialty"></span></p>
+                    </div>
+
+                    <form id="appointmentForm">
+                        <div class="mb-3">
+                            <label for="patientName" class="form-label fw-bold">Patient Name</label>
+                            <input type="text" class="form-control" id="patientName" required placeholder="Full name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="caregiverName" class="form-label fw-bold">Your Name (Caregiver)</label>
+                            <input type="text" class="form-control" id="caregiverName" required placeholder="Your name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="contactPhone" class="form-label fw-bold">Phone Number</label>
+                            <input type="tel" class="form-control" id="contactPhone" required placeholder="(555) 123-4567">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label fw-bold">Email Address</label>
+                            <input type="email" class="form-control" id="contactEmail" required placeholder="your@email.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="preferredDate" class="form-label fw-bold">Preferred Date</label>
+                            <input type="date" class="form-control" id="preferredDate" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="preferredTime" class="form-label fw-bold">Preferred Time</label>
+                            <select class="form-select" id="preferredTime" required>
+                                <option value="">Select time...</option>
+                                <option value="morning">Morning (8am - 12pm)</option>
+                                <option value="afternoon">Afternoon (12pm - 4pm)</option>
+                                <option value="evening">Evening (4pm - 6pm)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="reasonForVisit" class="form-label fw-bold">Reason for Visit</label>
+                            <textarea class="form-control" id="reasonForVisit" rows="3" placeholder="Brief description of concerns..."></textarea>
+                        </div>
+
+                        <div class="alert alert-info small mb-3" role="alert">
+                            <strong>Note:</strong> This is a prototype. In a real application, this would send your request to the doctor's office.
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="fs-1 text-success mb-3">✓</div>
+                    <h4 class="fw-bold text-success mb-3">Request Submitted Successfully!</h4>
+                    <p class="text-secondary mb-4">Your appointment request has been sent. The doctor's office will contact you within 1-2 business days to confirm your appointment.</p>
+                    <p class="text-muted small mb-4">You will receive a confirmation email at <strong id="confirmEmail"></strong></p>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 border-top mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                    <h6 class="fw-bold text-danger mb-2">⚠️ Important Medical Disclaimer</h6>
+                    <p class="text-muted small mb-2">
+                        <strong>EchoCare is NOT a medical device and does NOT provide medical advice, diagnosis, or treatment.</strong> 
+                        This app is designed as a tracking and organizational tool for caregivers only. 
+                        Always consult qualified healthcare professionals for medical decisions. 
+                        In case of emergency, call 112 or your local emergency services immediately.
+                    </p>
+                    <a href="disclaimer.html" class="text-primary small">Read Full Disclaimer →</a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <p class="text-muted small mb-1">© 2026 EchoCare </p>
+                    <p class="text-muted small">Team CourFour ❤️</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('preferredDate').setAttribute('min', today);
+
+        // Open appointment modal
+        function openAppointmentModal(doctorName, specialty) {
+            document.getElementById('modalDoctorName').textContent = doctorName;
+            document.getElementById('modalDoctorSpecialty').textContent = specialty;
+            
+            const appointmentModal = new bootstrap.Modal(document.getElementById('appointmentModal'));
+            appointmentModal.show();
+        }
+
+        // Handle form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const email = document.getElementById('contactEmail').value;
+            
+            // Close appointment modal
+            const appointmentModal = bootstrap.Modal.getInstance(document.getElementById('appointmentModal'));
+            appointmentModal.hide();
+
+            // Show success modal
+            document.getElementById('confirmEmail').textContent = email;
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+
+            // Reset form
+            this.reset();
+
+            // Optional: Save request to localStorage for demo purposes
+            const request = {
+                id: Date.now(),
+                doctor: document.getElementById('modalDoctorName').textContent,
+                specialty: document.getElementById('modalDoctorSpecialty').textContent,
+                patientName: document.getElementById('patientName').value,
+                caregiverName: document.getElementById('caregiverName').value,
+                phone: document.getElementById('contactPhone').value,
+                email: email,
+                date: document.getElementById('preferredDate').value,
+                time: document.getElementById('preferredTime').value,
+                reason: document.getElementById('reasonForVisit').value,
+                timestamp: new Date().toISOString()
+            };
+
+            let requests = JSON.parse(localStorage.getItem('echocare_appointments') || '[]');
+            requests.push(request);
+            localStorage.setItem('echocare_appointments', JSON.stringify(requests));
+        });
+
+        // Simple search/filter functionality (for demo)
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const specialty = document.getElementById('specialtyFilter').value;
+            
+            // In a real app, this would filter the doctor cards
+            // For now, just show an alert
+            if (searchTerm || specialty !== 'all') {
+                alert('Search functionality would filter doctors here. This is a prototype demo.');
+            }
+        });
+    </script>
+</body>
+</html>

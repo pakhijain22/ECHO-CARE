@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Tracker - EchoCare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <span class="fs-4">🧠 EchoCare</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link " href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="tracker.html">Symptom Tracker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="patient-dashboard.html">Patient Care</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="alerts.html">Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="doctors.html">Find Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="disclaimer.html">Disclaimer</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Tracker Header -->
+    <section class="bg-gradient py-4">
+        <div class="container">
+            <h1 class="text-primary fw-bold mb-2">Daily Symptom Tracker</h1>
+            <p class="text-secondary mb-0">Log your loved one's symptoms and behaviors to identify patterns over time</p>
+        </div>
+    </section>
+
+    <!-- Tracker Form -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Success Alert (hidden by default) -->
+                    <div id="successAlert" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                        <strong>✓ Entry saved successfully!</strong> Your symptom log has been recorded.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <form id="trackerForm">
+                                <!-- Date -->
+                                <div class="mb-4">
+                                    <label for="logDate" class="form-label fw-bold">Date</label>
+                                    <input type="date" class="form-control" id="logDate" required>
+                                    <div class="form-text">Select the date for this symptom log</div>
+                                </div>
+
+                                <!-- Symptoms & Behaviors -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold mb-3">Symptoms & Behaviors Observed</label>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="confusion" name="symptoms" value="confusion">
+                                                <label class="form-check-label" for="confusion">
+                                                    Confusion or Disorientation
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="wandering" name="symptoms" value="wandering">
+                                                <label class="form-check-label" for="wandering">
+                                                    Wandering or Restlessness
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="agitation" name="symptoms" value="agitation">
+                                                <label class="form-check-label" for="agitation">
+                                                    Agitation or Aggression
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="sleep" name="symptoms" value="sleep">
+                                                <label class="form-check-label" for="sleep">
+                                                    Sleep Issues (insomnia/excessive sleep)
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="appetite" name="symptoms" value="appetite">
+                                                <label class="form-check-label" for="appetite">
+                                                    Appetite Changes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="medication" name="symptoms" value="medication">
+                                                <label class="form-check-label" for="medication">
+                                                    Missed Medication
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="falls" name="symptoms" value="falls">
+                                                <label class="form-check-label" for="falls">
+                                                    Falls or Balance Issues
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Fall Details (conditional) -->
+                                <div class="mb-4 d-none" id="fallDetailsSection">
+                                    <label class="form-label fw-bold text-danger">Fall Details</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="fallInjury" name="fallInjury">
+                                        <label class="form-check-label text-danger" for="fallInjury">
+                                            <strong>Fall resulted in injury</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-text text-danger small">⚠️ If there is a serious injury, seek immediate medical attention</div>
+                                </div>
+
+                                <!-- Notes -->
+                                <div class="mb-4">
+                                    <label for="notes" class="form-label fw-bold">Additional Notes</label>
+                                    <textarea class="form-control" id="notes" rows="4" placeholder="Any additional observations, triggers, or context..."></textarea>
+                                    <div class="form-text">Include details like time of day, triggers, or unusual circumstances</div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">Save Entry</button>
+                                    <a href="dashboard.html" class="btn btn-outline-primary btn-lg">View Dashboard</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Info Card -->
+                    <div class="card border-0 bg-light mt-4">
+                        <div class="card-body">
+                            <h6 class="fw-bold text-primary mb-2">💡 Tracking Tips</h6>
+                            <ul class="small text-secondary mb-0">
+                                <li>Log entries at the same time each day for consistency</li>
+                                <li>Be specific in your notes - include time, location, and context</li>
+                                <li>Track even "good days" to identify positive patterns</li>
+                                <li>Share your dashboard with healthcare providers at appointments</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 border-top mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                    <h6 class="fw-bold text-danger mb-2">⚠️ Important Medical Disclaimer</h6>
+                    <p class="text-muted small mb-2">
+                        <strong>EchoCare is NOT a medical device and does NOT provide medical advice, diagnosis, or treatment.</strong> 
+                        This app is designed as a tracking and organizational tool for caregivers only. 
+                        Always consult qualified healthcare professionals for medical decisions. 
+                        In case of emergency, call 112 or your local emergency services immediately.
+                    </p>
+                    <a href="disclaimer.html" class="text-primary small">Read Full Disclaimer →</a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <p class="text-muted small mb-1">© 2026 EchoCare </p>
+                    <p class="text-muted small">Team CourFour ❤️</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Set today's date as default
+        document.getElementById('logDate').valueAsDate = new Date();
+
+        // Show/hide fall details section
+        document.getElementById('falls').addEventListener('change', function() {
+            const fallDetailsSection = document.getElementById('fallDetailsSection');
+            if (this.checked) {
+                fallDetailsSection.classList.remove('d-none');
+            } else {
+                fallDetailsSection.classList.add('d-none');
+                document.getElementById('fallInjury').checked = false;
+            }
+        });
+
+        // Form submission
+        document.getElementById('trackerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect form data
+            const logDate = document.getElementById('logDate').value;
+            const symptoms = Array.from(document.querySelectorAll('input[name="symptoms"]:checked'))
+                .map(cb => cb.value);
+            const fallInjury = document.getElementById('fallInjury').checked;
+            const notes = document.getElementById('notes').value.trim();
+
+            // Create log entry
+            const logEntry = {
+                id: Date.now(),
+                date: logDate,
+                symptoms: symptoms,
+                fallInjury: fallInjury,
+                notes: notes,
+                timestamp: new Date().toISOString()
+            };
+
+            // Get existing logs from localStorage
+            let logs = JSON.parse(localStorage.getItem('echocare_logs') || '[]');
+            
+            // Add new entry
+            logs.push(logEntry);
+            
+            // Save back to localStorage
+            localStorage.setItem('echocare_logs', JSON.stringify(logs));
+
+            // Show success alert
+            const successAlert = document.getElementById('successAlert');
+            successAlert.classList.remove('d-none');
+            
+            // Scroll to top to show alert
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Reset form
+            this.reset();
+            document.getElementById('logDate').valueAsDate = new Date();
+            document.getElementById('fallDetailsSection').classList.add('d-none');
+
+            // Hide alert after 5 seconds
+            setTimeout(() => {
+                successAlert.classList.add('d-none');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

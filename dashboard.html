@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EchoCare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <span class="fs-4">🧠 EchoCare</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link " href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tracker.html">Symptom Tracker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="patient-dashboard.html">Patient Care</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="alerts.html">Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="doctors.html">Find Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="disclaimer.html">Disclaimer</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Dashboard Header -->
+    <section class="bg-gradient py-4">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div>
+                    <h1 class="text-primary fw-bold mb-2">Dashboard</h1>
+                    <p class="text-secondary mb-0">Track symptom trends and identify patterns over time</p>
+                </div>
+                <div class="mt-3 mt-md-0">
+                    <a href="tracker.html" class="btn btn-primary">+ Add New Entry</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Time Period Selector -->
+            <div class="mb-4">
+                <label class="form-label fw-bold">View Period:</label>
+                <select id="periodSelector" class="form-select w-auto">
+                    <option value="7">Last 7 Days</option>
+                    <option value="14">Last 14 Days</option>
+                    <option value="30">Last 30 Days</option>
+                    <option value="all">All Time</option>
+                </select>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="fs-1 mb-2">📝</div>
+                            <h3 class="fw-bold text-primary mb-1" id="totalEntries">0</h3>
+                            <p class="text-secondary small mb-0">Total Entries Logged</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="fs-1 mb-2">🧩</div>
+                            <h3 class="fw-bold text-warning mb-1" id="confusionCount">0</h3>
+                            <p class="text-secondary small mb-0">Confusion Episodes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="fs-1 mb-2">🚶</div>
+                            <h3 class="fw-bold text-info mb-1" id="wanderingCount">0</h3>
+                            <p class="text-secondary small mb-0">Wandering Incidents</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="fs-1 mb-2">⚠️</div>
+                            <h3 class="fw-bold text-danger mb-1" id="fallsCount">0</h3>
+                            <p class="text-secondary small mb-0">Falls Reported</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Symptom Breakdown -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0 pt-4 px-4">
+                            <h5 class="fw-bold mb-0">Symptom Breakdown</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                                        <span class="text-secondary">Agitation</span>
+                                        <span class="badge bg-primary rounded-pill" id="agitationCount">0</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                                        <span class="text-secondary">Sleep Issues</span>
+                                        <span class="badge bg-primary rounded-pill" id="sleepCount">0</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                                        <span class="text-secondary">Appetite Changes</span>
+                                        <span class="badge bg-primary rounded-pill" id="appetiteCount">0</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                                        <span class="text-secondary">Missed Medication</span>
+                                        <span class="badge bg-primary rounded-pill" id="medicationCount">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern Insights (Non-Diagnostic) -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-12">
+                    <div class="card border-0 shadow-sm border-start border-primary border-4">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold text-primary mb-3">📊 Pattern Insights (Non-Diagnostic)</h5>
+                            <p class="text-muted small mb-3">
+                                <em>These are observational patterns only. Not medical advice or diagnosis.</em>
+                            </p>
+                            <div id="insightsContainer">
+                                <!-- Insights will be dynamically generated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Entries -->
+            <div class="row g-4">
+                <div class="col-lg-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0 pt-4 px-4">
+                            <h5 class="fw-bold mb-0">Recent Entries</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <div id="recentEntriesContainer">
+                                <!-- Recent entries will be dynamically generated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-5 d-none">
+                <div class="fs-1 mb-3">📋</div>
+                <h5 class="text-secondary mb-3">No entries logged yet</h5>
+                <p class="text-muted mb-4">Start tracking symptoms to see insights and trends</p>
+                <a href="tracker.html" class="btn btn-primary btn-lg">Log Your First Entry</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 border-top mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                    <h6 class="fw-bold text-danger mb-2">⚠️ Important Medical Disclaimer</h6>
+                    <p class="text-muted small mb-2">
+                        <strong>EchoCare is NOT a medical device and does NOT provide medical advice, diagnosis, or treatment.</strong> 
+                        This app is designed as a tracking and organizational tool for caregivers only. 
+                        Always consult qualified healthcare professionals for medical decisions. 
+                        In case of emergency, call 112 or your local emergency services immediately.
+                    </p>
+                    <a href="disclaimer.html" class="text-primary small">Read Full Disclaimer →</a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <p class="text-muted small mb-1">© 2026 EchoCare </p>
+                    <p class="text-muted small">Team CourFour ❤️</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Load and display dashboard data
+        function loadDashboard() {
+            const logs = JSON.parse(localStorage.getItem('echocare_logs') || '[]');
+            const period = parseInt(document.getElementById('periodSelector').value);
+            
+            // Filter logs based on selected period
+            let filteredLogs = logs;
+            if (period !== 'all') {
+                const cutoffDate = new Date();
+                cutoffDate.setDate(cutoffDate.getDate() - period);
+                filteredLogs = logs.filter(log => new Date(log.date) >= cutoffDate);
+            }
+
+            // Show empty state if no logs
+            if (logs.length === 0) {
+                document.getElementById('emptyState').classList.remove('d-none');
+                return;
+            } else {
+                document.getElementById('emptyState').classList.add('d-none');
+            }
+
+            // Calculate summary statistics
+            const totalEntries = filteredLogs.length;
+            const confusionCount = filteredLogs.filter(log => log.symptoms.includes('confusion')).length;
+            const wanderingCount = filteredLogs.filter(log => log.symptoms.includes('wandering')).length;
+            const fallsCount = filteredLogs.filter(log => log.symptoms.includes('falls')).length;
+            const agitationCount = filteredLogs.filter(log => log.symptoms.includes('agitation')).length;
+            const sleepCount = filteredLogs.filter(log => log.symptoms.includes('sleep')).length;
+            const appetiteCount = filteredLogs.filter(log => log.symptoms.includes('appetite')).length;
+            const medicationCount = filteredLogs.filter(log => log.symptoms.includes('medication')).length;
+
+            // Update summary cards
+            document.getElementById('totalEntries').textContent = totalEntries;
+            document.getElementById('confusionCount').textContent = confusionCount;
+            document.getElementById('wanderingCount').textContent = wanderingCount;
+            document.getElementById('fallsCount').textContent = fallsCount;
+            document.getElementById('agitationCount').textContent = agitationCount;
+            document.getElementById('sleepCount').textContent = sleepCount;
+            document.getElementById('appetiteCount').textContent = appetiteCount;
+            document.getElementById('medicationCount').textContent = medicationCount;
+
+            // Generate insights
+            generateInsights(filteredLogs, confusionCount, wanderingCount, fallsCount, agitationCount, sleepCount, medicationCount);
+
+            // Display recent entries
+            displayRecentEntries(filteredLogs);
+        }
+
+        function generateInsights(logs, confusion, wandering, falls, agitation, sleep, medication) {
+            const container = document.getElementById('insightsContainer');
+            const insights = [];
+
+            if (logs.length === 0) {
+                container.innerHTML = '<p class="text-muted">Not enough data to generate insights. Continue logging to see patterns.</p>';
+                return;
+            }
+
+            // Calculate percentage of entries with each symptom
+            const confusionRate = (confusion / logs.length) * 100;
+            const wanderingRate = (wandering / logs.length) * 100;
+            const fallRate = (falls / logs.length) * 100;
+            const agitationRate = (agitation / logs.length) * 100;
+            const sleepRate = (sleep / logs.length) * 100;
+            const medicationRate = (medication / logs.length) * 100;
+
+            // Generate insights based on data
+            if (confusionRate > 60) {
+                insights.push({
+                    type: 'warning',
+                    text: `Confusion was reported in ${confusion} out of ${logs.length} entries (${confusionRate.toFixed(0)}%). Consider discussing this pattern with a healthcare provider.`
+                });
+            } else if (confusionRate > 30) {
+                insights.push({
+                    type: 'info',
+                    text: `Confusion episodes appear moderate. Continue monitoring and note any triggers or times of day when confusion is more frequent.`
+                });
+            }
+
+            if (falls > 0) {
+                const fallsWithInjury = logs.filter(log => log.fallInjury).length;
+                if (fallsWithInjury > 0) {
+                    insights.push({
+                        type: 'danger',
+                        text: `⚠️ ${fallsWithInjury} fall(s) with injury reported. Falls with injury require immediate medical attention. Consider home safety assessment.`
+                    });
+                } else {
+                    insights.push({
+                        type: 'warning',
+                        text: `${falls} fall(s) reported without injury. Falls are a serious concern - discuss fall prevention strategies with a healthcare provider.`
+                    });
+                }
+            }
+
+            if (wanderingRate > 40) {
+                insights.push({
+                    type: 'warning',
+                    text: `Wandering behavior was reported frequently (${wandering} times). Consider safety measures and discuss with a professional.`
+                });
+            }
+
+            if (sleepRate > 50) {
+                insights.push({
+                    type: 'info',
+                    text: `Sleep issues appear to be common. Sleep disturbances can affect overall well-being - consider discussing sleep hygiene strategies with a doctor.`
+                });
+            }
+
+            if (medicationRate > 20) {
+                insights.push({
+                    type: 'warning',
+                    text: `Medication was missed in ${medication} entries. Consider setting reminders or using a pill organizer. Discuss adherence challenges with a pharmacist or doctor.`
+                });
+            }
+
+            if (agitationRate > 40) {
+                insights.push({
+                    type: 'info',
+                    text: `Agitation was noted frequently. Try to identify triggers - certain times of day, activities, or environmental factors may contribute.`
+                });
+            }
+
+            // Default insight if no specific patterns
+            if (insights.length === 0) {
+                insights.push({
+                    type: 'success',
+                    text: `No concerning patterns detected in the current period. Continue regular monitoring and logging.`
+                });
+            }
+
+            // Render insights
+            let html = '';
+            insights.forEach(insight => {
+                const alertClass = insight.type === 'danger' ? 'alert-danger' : 
+                                 insight.type === 'warning' ? 'alert-warning' :
+                                 insight.type === 'success' ? 'alert-success' : 'alert-info';
+                html += `
+                    <div class="alert ${alertClass} mb-3" role="alert">
+                        <p class="mb-0">${insight.text}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="alert alert-light border mb-0 mt-3" role="alert">
+                    <p class="mb-0 small text-muted">
+                        <strong>Remember:</strong> These insights are observational only and do not constitute medical advice. 
+                        Always consult qualified healthcare professionals for assessment and treatment decisions.
+                    </p>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function displayRecentEntries(logs) {
+            const container = document.getElementById('recentEntriesContainer');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<p class="text-muted">No entries to display.</p>';
+                return;
+            }
+
+            // Sort by date (most recent first)
+            const sortedLogs = [...logs].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Display only the 5 most recent
+            const recentLogs = sortedLogs.slice(0, 5);
+
+            let html = '<div class="list-group">';
+            recentLogs.forEach(log => {
+                const date = new Date(log.date);
+                const formattedDate = date.toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+
+                const symptomBadges = log.symptoms.map(symptom => {
+                    const labels = {
+                        'confusion': 'Confusion',
+                        'wandering': 'Wandering',
+                        'agitation': 'Agitation',
+                        'sleep': 'Sleep Issues',
+                        'appetite': 'Appetite',
+                        'medication': 'Missed Med',
+                        'falls': 'Falls'
+                    };
+                    return `<span class="badge bg-secondary me-1">${labels[symptom] || symptom}</span>`;
+                }).join('');
+
+                const injuryBadge = log.fallInjury ? '<span class="badge bg-danger">Injury</span>' : '';
+
+                html += `
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="mb-0">${formattedDate}</h6>
+                        </div>
+                        <div class="mb-2">
+                            ${symptomBadges} ${injuryBadge}
+                        </div>
+                        ${log.notes ? `<p class="text-muted small mb-0"><em>"${log.notes}"</em></p>` : ''}
+                    </div>
+                `;
+            });
+            html += '</div>';
+
+            container.innerHTML = html;
+        }
+
+        // Period selector change event
+        document.getElementById('periodSelector').addEventListener('change', loadDashboard);
+
+        // Load dashboard on page load
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+</body>
+</html>

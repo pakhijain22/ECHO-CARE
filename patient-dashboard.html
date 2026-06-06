@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - EchoCare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <span class="fs-4">🧠 EchoCare</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tracker.html">Symptom Tracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="patient-dashboard.html">Patient Care</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="alerts.html">Alerts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctors.html">Find Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="disclaimer.html">Disclaimer</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section class="bg-gradient py-4">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div>
+                    <h1 class="text-primary fw-bold mb-2">Patient Care Dashboard</h1>
+                    <p class="text-secondary mb-0">Comprehensive care management for your loved one</p>
+                </div>
+                <div class="mt-3 mt-md-0">
+                    <span class="badge bg-success fs-6 px-3 py-2">✓ All Systems Normal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Dashboard -->
+    <section class="py-4">
+        <div class="container">
+            <ul class="nav nav-pills mb-4 flex-wrap" id="dashboardTabs" role="tablist">
+                <li class="nav-item me-2 mb-2" role="presentation">
+                    <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview"
+                        type="button" role="tab">
+                        📊 Overview
+                    </button>
+                </li>
+                <li class="nav-item me-2 mb-2" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="pill" data-bs-target="#profile"
+                        type="button" role="tab">
+                        👤 Personal Info
+                    </button>
+                </li>
+                <li class="nav-item me-2 mb-2" role="presentation">
+                    <button class="nav-link" id="medications-tab" data-bs-toggle="pill" data-bs-target="#medications"
+                        type="button" role="tab">
+                        💊 Medications
+                    </button>
+                </li>
+                <li class="nav-item me-2 mb-2" role="presentation">
+                    <button class="nav-link" id="activities-tab" data-bs-toggle="pill" data-bs-target="#activities"
+                        type="button" role="tab">
+                        🎯 Activities
+                    </button>
+                </li>
+                <li class="nav-item me-2 mb-2" role="presentation">
+                    <button class="nav-link" id="memory-tab" data-bs-toggle="pill" data-bs-target="#memory"
+                        type="button" role="tab">
+                        📸 Memory Lane
+                    </button>
+                </li>
+                <li class="nav-item me-2 mb-2" role="presentation">
+                    <button class="nav-link" id="emergency-tab" data-bs-toggle="pill" data-bs-target="#emergency"
+                        type="button" role="tab">
+                        🚨 Emergency
+                    </button>
+                </li>
+                <li class="nav-item mb-2" role="presentation">
+                    <button class="nav-link" id="settings-tab" data-bs-toggle="pill" data-bs-target="#settings"
+                        type="button" role="tab">
+                        ⚙️ Settings
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="dashboardTabContent">
+                <!-- OVERVIEW TAB -->
+                <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Wellness Score -->
+                        <div class="col-lg-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body text-center p-4">
+                                    <h5 class="fw-bold mb-3">Overall Wellness Score</h5>
+                                    <div class="position-relative d-inline-block mb-3">
+                                        <svg width="160" height="160">
+                                            <circle cx="80" cy="80" r="70" fill="none" stroke="#E0E0E0"
+                                                stroke-width="12"></circle>
+                                            <circle cx="80" cy="80" r="70" fill="none" stroke="#5CB85C"
+                                                stroke-width="12" stroke-dasharray="440" stroke-dashoffset="66"
+                                                transform="rotate(-90 80 80)"></circle>
+                                        </svg>
+                                        <div class="position-absolute top-50 start-50 translate-middle">
+                                            <h2 class="fw-bold text-success mb-0">85%</h2>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted mb-0">Good overall health</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Weekly Progress -->
+                        <div class="col-lg-8">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-4">This Week's Progress</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span class="text-secondary">Activities Completed</span>
+                                                    <span class="fw-bold text-primary">12/15</span>
+                                                </div>
+                                                <div class="progress" style="height: 10px;">
+                                                    <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span class="text-secondary">Medications Taken</span>
+                                                    <span class="fw-bold text-success">42/42</span>
+                                                </div>
+                                                <div class="progress" style="height: 10px;">
+                                                    <div class="progress-bar bg-success" style="width: 100%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span class="text-secondary">Sleep Quality</span>
+                                                    <span class="fw-bold text-info">Good</span>
+                                                </div>
+                                                <div class="progress" style="height: 10px;">
+                                                    <div class="progress-bar bg-info" style="width: 75%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span class="text-secondary">Mood Score</span>
+                                                    <span class="fw-bold text-warning">7/10</span>
+                                                </div>
+                                                <div class="progress" style="height: 10px;">
+                                                    <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="col-lg-12">
+                            <div class="row g-3">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body text-center p-3">
+                                            <div class="fs-1 mb-2">✅</div>
+                                            <h3 class="fw-bold text-primary mb-1">6</h3>
+                                            <p class="text-muted small mb-0">Tasks Today</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body text-center p-3">
+                                            <div class="fs-1 mb-2">💊</div>
+                                            <h3 class="fw-bold text-success mb-1">4</h3>
+                                            <p class="text-muted small mb-0">Meds Today</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body text-center p-3">
+                                            <div class="fs-1 mb-2">🎯</div>
+                                            <h3 class="fw-bold text-info mb-1">3</h3>
+                                            <p class="text-muted small mb-0">Activities Left</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body text-center p-3">
+                                            <div class="fs-1 mb-2">📅</div>
+                                            <h3 class="fw-bold text-warning mb-1">1</h3>
+                                            <p class="text-muted small mb-0">Upcoming Appt</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Talk to Echo AI Companion -->
+                        <div class="col-lg-12">
+                            <div class="card border-0 shadow-sm border-primary border-2">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold text-primary mb-3">🤖 Talk to Echo (AI Companion)</h5>
+                                    <p class="text-muted small mb-3">
+                                        <em>Share your thoughts or concerns. Echo provides emotional support and general
+                                            wellness tips. Not medical advice.</em>
+                                    </p>
+
+                                    <iframe id="JotFormIFrame-019c6a3e7246732b84d64aa9b95424d9c262"
+                                        title="Echo: Caregiver Support Assistant" onload="window.parent.scrollTo(0,0)"
+                                        allowtransparency="true" allow="geolocation; microphone; camera; fullscreen"
+                                        src="https://agent.jotform.com/019c6a3e7246732b84d64aa9b95424d9c262?embedMode=iframe&background=1&shadow=1"
+                                        frameborder="0" style="
+    max-width:100%;
+    height:688px;
+    border:none;
+    
+    width:100%;
+  " scrolling="no">
+                                    </iframe>
+                                    <script
+                                        src='https://cdn.jotfor.ms/s/umd/a59a2b22ff6/for-form-embed-handler.js'></script>
+                                    <script>
+                                        window.jotformEmbedHandler("iframe[id='JotFormIFrame-019c6a3e7246732b84d64aa9b95424d9c262']",
+                                            "https://www.jotform.com")
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PERSONAL INFO TAB -->
+                <div class="tab-pane fade" id="profile" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-4">Patient Profile</h5>
+                                    <div class="text-center mb-4">
+                                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                                            style="width: 100px; height: 100px;">
+                                            <span class="fs-1">👤</span>
+                                        </div>
+                                    </div>
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-muted fw-bold">Full Name:</td>
+                                                <td>Maya Verma</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted fw-bold">Date of Birth:</td>
+                                                <td>March 15, 1945 (80 years)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted fw-bold">Blood Type:</td>
+                                                <td>O+</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted fw-bold">Height / Weight:</td>
+                                                <td>5'4" / 55 kgs</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted fw-bold">Primary Physician:</td>
+                                                <td>Dr. Suman Sharma</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted fw-bold">Medical ID:</td>
+                                                <td>MA-2045-8821</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted fw-bold">Home Address:</td>
+                                                <td>House No: 45, Block A, Vrinda Vihar, Delhi-110063, India</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-4">Emergency Contacts</h5>
+                                    <div class="mb-3 p-3 bg-light rounded">
+                                        <h6 class="fw-bold mb-1">Primary: Govind Verma (Son)</h6>
+                                        <p class="mb-1 text-muted small">📞 +91 9782818293</p>
+                                        <p class="mb-0 text-muted small">✉️ rohit.verma@email.com</p>
+                                    </div>
+                                    <div class="p-3 bg-light rounded">
+                                        <h6 class="fw-bold mb-1">Secondary: Gauri Verma (Daughter)</h6>
+                                        <p class="mb-1 text-muted small">📞 +91 9747382748</p>
+                                        <p class="mb-0 text-muted small">✉️ gauri.verma@email.com</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-3">Important Notes</h5>
+                                    <ul class="text-secondary mb-0">
+                                        <li class="mb-2">Allergic to penicillin</li>
+                                        <li class="mb-2">Prefers morning activities</li>
+                                        <li class="mb-2">Loves classical music and gardening</li>
+                                        <li class="mb-2">Needs assistance with bathing</li>
+                                        <li class="mb-2">Wears hearing aids</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEDICATIONS TAB -->
+                <div class="tab-pane fade" id="medications" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-8">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Today's Medication Schedule</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="list-group">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Donepezil 10mg</h6>
+                                                <p class="text-muted small mb-0">🕐 8:00 AM - With breakfast</p>
+                                            </div>
+                                            <button class="btn btn-success btn-sm" onclick="markAsTaken(this)">✓ Mark as
+                                                Taken</button>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Memantine 10mg</h6>
+                                                <p class="text-muted small mb-0">🕐 12:00 PM - With lunch</p>
+                                            </div>
+                                            <button class="btn btn-success btn-sm" onclick="markAsTaken(this)">✓ Mark as
+                                                Taken</button>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Vitamin D 2000 IU</h6>
+                                                <p class="text-muted small mb-0">🕐 6:00 PM - With dinner</p>
+                                            </div>
+                                            <button class="btn btn-success btn-sm" onclick="markAsTaken(this)">✓ Mark as
+                                                Taken</button>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Melatonin 3mg</h6>
+                                                <p class="text-muted small mb-0">🕐 9:00 PM - Before bed</p>
+                                            </div>
+                                            <button class="btn btn-success btn-sm" onclick="markAsTaken(this)">✓ Mark as
+                                                Taken</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-3">Medication Reminders</h5>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="medReminder1" checked>
+                                        <label class="form-check-label" for="medReminder1">
+                                            Morning reminder
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="medReminder2" checked>
+                                        <label class="form-check-label" for="medReminder2">
+                                            Afternoon reminder
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="medReminder3" checked>
+                                        <label class="form-check-label" for="medReminder3">
+                                            Evening reminder
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-4">
+                                    <h6 class="fw-bold text-primary mb-2">💡 Tip</h6>
+                                    <p class="small text-secondary mb-0">Set up pill organizers at the beginning of each
+                                        week to ensure medications are never missed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIVITIES TAB -->
+                <div class="tab-pane fade" id="activities" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-8">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Today's Activities</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="list-group">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">🌅 Morning Walk</h6>
+                                                <p class="text-muted small mb-0">30 minutes - Fresh air and light
+                                                    exercise</p>
+                                            </div>
+                                            <button class="btn btn-primary btn-sm" onclick="startActivity(this)">Start
+                                                Activity</button>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">🧩 Memory Game</h6>
+                                                <p class="text-muted small mb-0">20 minutes - Card matching exercise</p>
+                                            </div>
+                                            <button class="btn btn-primary btn-sm" onclick="startActivity(this)">Start
+                                                Activity</button>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">🎨 Arts & Crafts</h6>
+                                                <p class="text-muted small mb-0">45 minutes - Watercolor painting</p>
+                                            </div>
+                                            <button class="btn btn-primary btn-sm" onclick="startActivity(this)">Start
+                                                Activity</button>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">📖 Reading Time</h6>
+                                                <p class="text-muted small mb-0">30 minutes - Favorite book or magazine
+                                                </p>
+                                            </div>
+                                            <button class="btn btn-primary btn-sm" onclick="startActivity(this)">Start
+                                                Activity</button>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">🎵 Music Therapy</h6>
+                                                <p class="text-muted small mb-0">30 minutes - Classical favorites
+                                                    playlist</p>
+                                            </div>
+                                            <button class="btn btn-primary btn-sm" onclick="startActivity(this)">Start
+                                                Activity</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Suggested Activities</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="p-3 bg-light rounded">
+                                                <h6 class="fw-bold mb-2">🌿 Gardening</h6>
+                                                <p class="small text-muted mb-0">Gentle outdoor activity, great for mood
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="p-3 bg-light rounded">
+                                                <h6 class="fw-bold mb-2">🍳 Cooking Together</h6>
+                                                <p class="small text-muted mb-0">Simple recipes, sensory engagement</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="p-3 bg-light rounded">
+                                                <h6 class="fw-bold mb-2">📺 Classic Movies</h6>
+                                                <p class="small text-muted mb-0">Familiar favorites from the past</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="p-3 bg-light rounded">
+                                                <h6 class="fw-bold mb-2">🐕 Pet Therapy</h6>
+                                                <p class="small text-muted mb-0">Spending time with animals</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-3">Activity Stats</h5>
+                                    <div class="mb-3">
+                                        <p class="text-muted small mb-1">This Week</p>
+                                        <h3 class="fw-bold text-primary mb-0">12 Activities</h3>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="text-muted small mb-1">Average Duration</p>
+                                        <h3 class="fw-bold text-info mb-0">35 min</h3>
+                                    </div>
+                                    <div>
+                                        <p class="text-muted small mb-1">Favorite Activity</p>
+                                        <h6 class="fw-bold text-success mb-0">🎵 Music Therapy</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-4">
+                                    <h6 class="fw-bold text-primary mb-2">💡 Activity Tips</h6>
+                                    <ul class="small text-secondary mb-0">
+                                        <li class="mb-2">Keep activities short and simple</li>
+                                        <li class="mb-2">Schedule during peak energy times</li>
+                                        <li class="mb-2">Focus on enjoyment, not perfection</li>
+                                        <li class="mb-2">Allow plenty of time for completion</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMORY LANE TAB -->
+                <div class="tab-pane fade" id="memory" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-8">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Photo Album</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="row g-3">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="bg-light rounded"
+                                                style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fs-1">🏖️</span>
+                                            </div>
+                                            <p class="text-center text-muted small mt-2 mb-0">Beach Vacation 1985</p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="bg-light rounded"
+                                                style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fs-1">👨‍👩‍👧‍👦</span>
+                                            </div>
+                                            <p class="text-center text-muted small mt-2 mb-0">Family Reunion 1992</p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="bg-light rounded"
+                                                style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fs-1">🎓</span>
+                                            </div>
+                                            <p class="text-center text-muted small mt-2 mb-0">Graduation Day 1998</p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="bg-light rounded"
+                                                style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fs-1">🌸</span>
+                                            </div>
+                                            <p class="text-center text-muted small mt-2 mb-0">Garden Party 2005</p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="bg-light rounded"
+                                                style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fs-1">🎄</span>
+                                            </div>
+                                            <p class="text-center text-muted small mt-2 mb-0">Christmas 2010</p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="bg-light rounded"
+                                                style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fs-1">🎂</span>
+                                            </div>
+                                            <p class="text-center text-muted small mt-2 mb-0">75th Birthday 2020</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-3">Memory Prompt of the Day</h5>
+                                    <div class="p-3 bg-primary bg-opacity-10 rounded mb-3">
+                                        <p class="mb-0 text-primary">
+                                            <strong>"Tell me about your favorite family holiday tradition."</strong>
+                                        </p>
+                                    </div>
+                                    <form id="memoryForm">
+                                        <div class="mb-3">
+                                            <textarea class="form-control" id="memoryInput" rows="5"
+                                                placeholder="Share a memory here..."></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">💾 Share Memory</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMERGENCY TAB -->
+                <div class="tab-pane fade" id="emergency" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="alert alert-danger border-danger border-3 mb-4" role="alert">
+                                <h5 class="alert-heading fw-bold mb-2">🚨 Emergency Services</h5>
+                                <p class="mb-2">
+                                    <strong>For life-threatening emergencies, ALWAYS call 112 immediately.</strong>
+                                </p>
+                                <hr>
+                                <p class="mb-0 small">
+                                    The contacts below are for non-emergency situations. In case of chest pain,
+                                    difficulty breathing,
+                                    loss of consciousness, or severe injury, dial 112 first.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-danger text-white pt-3 px-4">
+                                    <h5 class="fw-bold mb-0">Emergency Hotlines</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center mb-3 p-3 bg-light rounded">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Emergency Services</h6>
+                                            <p class="fs-4 fw-bold text-danger mb-0">112</p>
+                                        </div>
+                                        <a href="tel:112" class="btn btn-danger">📞 Call</a>
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center mb-3 p-3 bg-light rounded">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Poison Control</h6>
+                                            <p class="fw-bold text-primary mb-0">1800-116-117</p>
+                                        </div>
+                                        <a href="tel:18002221222" class="btn btn-primary">📞 Call</a>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Crisis Lifeline</h6>
+                                            <p class="fw-bold text-primary mb-0">9152987821</p>
+                                        </div>
+                                        <a href="tel:988" class="btn btn-primary">📞 Call</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Family Emergency Contacts</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center mb-3 p-3 bg-light rounded">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Govind Verma (Son)</h6>
+                                            <p class="mb-0 text-muted small">+91 9782818293</p>
+                                        </div>
+                                        <a href="tel:5551234567" class="btn btn-outline-primary btn-sm">📞 Call</a>
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center mb-3 p-3 bg-light rounded">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Gauri Verma (Daughter)</h6>
+                                            <p class="mb-0 text-muted small">+91 9747382748</p>
+                                        </div>
+                                        <a href="tel:5559876543" class="btn btn-outline-primary btn-sm">📞 Call</a>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Dr. Suman Sharma</h6>
+                                            <p class="mb-0 text-muted small">+91 9827364781</p>
+                                        </div>
+                                        <a href="tel:5550101001" class="btn btn-outline-primary btn-sm">📞 Call</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold text-danger mb-3">⚠️ Emergency Preparedness Checklist</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="text-secondary mb-0">
+                                                <li class="mb-2">Current medication list posted on refrigerator</li>
+                                                <li class="mb-2">Medical ID bracelet worn at all times</li>
+                                                <li class="mb-2">Emergency contacts list by phone</li>
+                                                <li class="mb-2">Copy of advance directives accessible</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="text-secondary mb-0">
+                                                <li class="mb-2">Health insurance cards in wallet</li>
+                                                <li class="mb-2">List of allergies documented</li>
+                                                <li class="mb-2">Hospital preference noted</li>
+                                                <li class="mb-2">Power of attorney documents filed</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS TAB -->
+                <div class="tab-pane fade" id="settings" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Accessibility Settings</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="largeText">
+                                            <label class="form-check-label" for="largeText">
+                                                <strong>Large Text Mode</strong>
+                                                <p class="text-muted small mb-0">Increase font size throughout the app
+                                                </p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="highContrast">
+                                            <label class="form-check-label" for="highContrast">
+                                                <strong>High Contrast Mode</strong>
+                                                <p class="text-muted small mb-0">Enhance color contrast for better
+                                                    visibility</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="simpleMode">
+                                            <label class="form-check-label" for="simpleMode">
+                                                <strong>Simplified Interface</strong>
+                                                <p class="text-muted small mb-0">Reduce visual complexity</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="voiceGuidance">
+                                            <label class="form-check-label" for="voiceGuidance">
+                                                <strong>Voice Guidance</strong>
+                                                <p class="text-muted small mb-0">Audio instructions for activities</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Notification Settings</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="medReminders" checked>
+                                            <label class="form-check-label" for="medReminders">
+                                                <strong>Medication Reminders</strong>
+                                                <p class="text-muted small mb-0">Alert for scheduled medications</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="activityAlerts" checked>
+                                            <label class="form-check-label" for="activityAlerts">
+                                                <strong>Activity Alerts</strong>
+                                                <p class="text-muted small mb-0">Reminders for scheduled activities</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="appointmentReminders"
+                                                checked>
+                                            <label class="form-check-label" for="appointmentReminders">
+                                                <strong>Appointment Reminders</strong>
+                                                <p class="text-muted small mb-0">Notifications for doctor visits</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="dailySummary">
+                                            <label class="form-check-label" for="dailySummary">
+                                                <strong>Daily Summary</strong>
+                                                <p class="text-muted small mb-0">End-of-day progress report</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-0 pt-4 px-4">
+                                    <h5 class="fw-bold mb-0">Privacy & Data</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="shareData">
+                                            <label class="form-check-label" for="shareData">
+                                                <strong>Share Data with Healthcare Providers</strong>
+                                                <p class="text-muted small mb-0">Allow doctors to access care logs</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="familyAccess" checked>
+                                            <label class="form-check-label" for="familyAccess">
+                                                <strong>Family Member Access</strong>
+                                                <p class="text-muted small mb-0">Allow family to view dashboard</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="anonymousData">
+                                            <label class="form-check-label" for="anonymousData">
+                                                <strong>Anonymous Research Data</strong>
+                                                <p class="text-muted small mb-0">Contribute to dementia research
+                                                    (anonymized)</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-outline-primary" onclick="exportData()">📥 Export All
+                                            Data</button>
+                                        <button class="btn btn-outline-danger" onclick="confirmClearData()">🗑️ Clear
+                                            All Data</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-4">
+                                    <h6 class="fw-bold text-primary mb-2">ℹ️ About Data Storage</h6>
+                                    <p class="small text-secondary mb-0">
+                                        This is a prototype. All data is stored locally in your browser.
+                                        No information is sent to external servers. Clearing browser data will delete
+                                        all records.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 border-top mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                    <h6 class="fw-bold text-danger mb-2">⚠️ Important Medical Disclaimer</h6>
+                    <p class="text-muted small mb-2">
+                        <strong>EchoCare is NOT a medical device and does NOT provide medical advice, diagnosis, or
+                            treatment.</strong>
+                        This app is designed as a tracking and organizational tool for caregivers only.
+                        Always consult qualified healthcare professionals for medical decisions.
+                        In case of emergency, call 112 or your local emergency services immediately.
+                    </p>
+                    <a href="disclaimer.html" class="text-primary small">Read Full Disclaimer →</a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <p class="text-muted small mb-1">© 2026 EchoCare </p>
+                    <p class="text-muted small">Team CourFour ❤️</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="patient-dashboard.js"></script>
+</body>
+
+</html>
